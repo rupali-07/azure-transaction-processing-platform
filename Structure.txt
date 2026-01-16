@@ -1,0 +1,95 @@
+azure-transaction-processing-platform/
+│
+├── README.md
+├── .gitignore
+├── LICENSE
+│
+├── docs/
+│   ├── architecture.md
+│   ├── api-spec.md
+│   ├── monitoring-alerts.md
+│   ├── failure-recovery.md
+│   └── resume-description.md
+│
+├── infrastructure/
+│   ├── bicep/
+│   │   ├── main.bicep
+│   │   ├── cosmosdb.bicep
+│   │   ├── servicebus.bicep
+│   │   ├── functionapp.bicep
+│   │   ├── apim.bicep
+│   │   └── monitoring.bicep
+│   │
+│   ├── parameters/
+│   │   └── dev.parameters.json
+│   │
+│   └── deploy.sh
+│
+├── api/
+│   └── transaction-api/
+│       ├── TransactionAPI/
+│       │   ├── __init__.py
+│       │   ├── function.json
+│       │   └── README.md
+│       │
+│       ├── host.json
+│       ├── requirements.txt
+│       └── local.settings.json.example
+│
+├── events/
+│   ├── eventgrid/
+│   │   └── event-schema.json
+│   │
+│   └── servicebus/
+│       └── queue-config.md
+│
+├── databricks/
+│   ├── notebooks/
+│   │   ├── transaction_audit_ingestion.py
+│   │   ├── dlq_processor.py
+│   │   └── analytics_transformations.py
+│   │
+│   └── jobs/
+│       └── audit_pipeline_job.json
+│
+├── fabric/
+│   ├── lakehouse/
+│   │   ├── tables/
+│   │   │   ├── audit_logs.sql
+│   │   │   └── transactions.sql
+│   │   │
+│   │   └── schemas.md
+│   │
+│   ├── pipelines/
+│   │   └── fabric_pipeline.json
+│   │
+│   └── dashboards/
+│       └── operations_dashboard.pbix
+│
+├── monitoring/
+│   ├── log-queries.kql
+│   ├── alerts.json
+│   └── dashboard.md
+│
+├── ci-cd/
+│   ├── github-actions/
+│   │   ├── deploy-infra.yml
+│   │   ├── deploy-function.yml
+│   │   └── databricks-job.yml
+│   │
+│   └── README.md
+│
+├── tests/
+│   ├── api/
+│   │   └── test_transaction_api.py
+│   │
+│   ├── integration/
+│   │   └── test_event_flow.py
+│   │
+│   └── load/
+│       └── load_test.py
+│
+└── scripts/
+    ├── setup-dev-env.sh
+    ├── seed-test-data.py
+    └── cleanup-resources.sh

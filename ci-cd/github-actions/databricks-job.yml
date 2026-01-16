@@ -1,0 +1,17 @@
+name: Databricks Job
+
+on:
+  workflow_dispatch:
+
+jobs:
+  databricks-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run Databricks Job
+        run: |
+          echo "Triggering Databricks/Fabric pipeline"
+          # In real projects, use Databricks CLI or Fabric REST API

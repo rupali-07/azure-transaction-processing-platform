@@ -1,0 +1,28 @@
+{
+  "name": "transaction-audit-pipeline",
+  "type": "DataPipeline",
+  "activities": [
+    {
+      "name": "IngestTransactions",
+      "type": "Notebook",
+      "notebook": {
+        "path": "/databricks/notebooks/transaction_audit_ingestion.py"
+      }
+    },
+    {
+      "name": "ValidateData",
+      "type": "Notebook",
+      "dependsOn": ["IngestTransactions"],
+      "notebook": {
+        "path": "/databricks/notebooks/analytics_transformations.py"
+      }
+    }
+  ],
+  "triggers": [
+    {
+      "type": "Schedule",
+      "frequency": "Minute",
+      "interval": 5
+    }
+  ]
+}

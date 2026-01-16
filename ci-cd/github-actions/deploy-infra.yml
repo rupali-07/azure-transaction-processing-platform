@@ -1,0 +1,28 @@
+name: Deploy Infrastructure
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - infrastructure/**
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Deploy Bicep templates
+        run: |
+          az deployment group create \
+            --resource-group rg-transaction-platform \
+            --template-file infrastructure/bicep/main.bicep \
+            --parameters infrastructure/parameters/dev.parameters.json

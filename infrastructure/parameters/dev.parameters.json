@@ -1,0 +1,9 @@
+{
+  $schema httpsschema.management.azure.comschemas2019-04-01deploymentParameters.json#,
+  contentVersion 1.0.0.0,
+  parameters {
+    environment {
+      value dev
+    }
+  }
+}

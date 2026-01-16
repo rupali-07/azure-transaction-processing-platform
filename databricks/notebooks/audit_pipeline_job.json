@@ -1,0 +1,11 @@
+{
+  "name": "transaction-audit-job",
+  "new_cluster": {
+    "spark_version": "13.3.x-scala2.12",
+    "node_type_id": "Standard_DS3_v2",
+    "num_workers": 2
+  },
+  "notebook_task": {
+    "notebook_path": "/notebooks/transaction_audit_ingestion"
+  }
+}

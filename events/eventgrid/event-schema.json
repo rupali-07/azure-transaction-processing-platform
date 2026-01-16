@@ -1,0 +1,10 @@
+{
+  "eventType": "TransactionCreated",
+  "subject": "transaction.created",
+  "data": {
+    "transactionId": "string",
+    "amount": "number",
+    "currency": "string",
+    "createdAt": "string"
+  }
+}
